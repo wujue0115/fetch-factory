@@ -1,5 +1,5 @@
 {
-  "name": "fetch-factory",
+  "name": "@wujue0115/fetch-factory",
   "version": "0.0.0",
   "description": "A fetch wrapper for browser and nodejs.",
   "homepage": "https://fetch-factoryjs.com",
@@ -8,6 +8,10 @@
     "name": "Wujue",
     "email": "wujue0115@gmail.com",
     "githubLink": "https://github.com/Wujue0115"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "keywords": [
     "fetch-factory",
