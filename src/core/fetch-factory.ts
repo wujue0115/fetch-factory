@@ -1,10 +1,11 @@
 import axios from "axios";
+import type { AxiosResponse } from "axios";
 
 type TConfig = {
   url?: string;
   method?: string;
   data?: object;
-  headers?: object;
+  headers?: { [key: string]: string };
   parames?: object;
 };
 
@@ -13,6 +14,8 @@ type TBase = {
   header: object;
   baseUrl: string;
 };
+
+type TResponse = Promise<{ data: AxiosResponse } | { error: any }>;
 
 export class FetchFactory {
   private _baseConfig: TConfig;
@@ -59,15 +62,13 @@ export class FetchFactory {
         : (config[parameterOrder[i]] = parameters[i]);
     }
 
-    console.log(config);
-
     config.url = this._baseUrl + config.url;
     config.method = config.method.toLowerCase();
 
     return config;
   }
 
-  async fetch(...parameters) {
+  async fetch(...parameters): TResponse {
     try {
       const parameterOrder = ["url", "method", "data", "headers", "options"];
       const config = this.createConfig(parameterOrder, ...parameters);
@@ -84,7 +85,7 @@ export class FetchFactory {
     }
   }
 
-  async get(...parameters) {
+  async get(...parameters): TResponse {
     try {
       const parameterOrder = ["method", "url", "data", "headers", "options"];
       const config = this.createConfig(parameterOrder, "get", ...parameters);
@@ -101,7 +102,7 @@ export class FetchFactory {
     }
   }
 
-  async post(...parameters) {
+  async post(...parameters): TResponse {
     try {
       const parameterOrder = ["method", "url", "data", "headers", "options"];
       const config = this.createConfig(parameterOrder, "post", ...parameters);
@@ -118,7 +119,7 @@ export class FetchFactory {
     }
   }
 
-  async put(...parameters) {
+  async put(...parameters): TResponse {
     try {
       const parameterOrder = ["method", "url", "data", "headers", "options"];
       const config = this.createConfig(parameterOrder, "put", ...parameters);
@@ -135,7 +136,7 @@ export class FetchFactory {
     }
   }
 
-  async delete(...parameters) {
+  async delete(...parameters): TResponse {
     try {
       const parameterOrder = ["method", "url", "data", "headers", "options"];
       const config = this.createConfig(parameterOrder, "delete", ...parameters);
