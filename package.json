@@ -1,0 +1,60 @@
+{
+  "name": "fetch-factory",
+  "version": "0.0.0",
+  "description": "A fetch wrapper for browser and nodejs.",
+  "homepage": "https://fetch-factoryjs.com",
+  "license": "MIT",
+  "author": {
+    "name": "Wujue",
+    "email": "wujue0115@gmail.com",
+    "githubLink": "https://github.com/Wujue0115"
+  },
+  "keywords": [
+    "fetch-factory",
+    "javascript library"
+  ],
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wujue0115/fetch-factory"
+  },
+  "bugs": {
+    "url": "https://github.com/Wujue0115/fetch-factory/issues"
+  },
+  "type": "module",
+  "main": "./dist/fetch-factory.cjs.js",
+  "module": "./dist/fetch-factory.esm.js",
+  "unpkg": "./dist/fetch-factory.umd.js",
+  "jsdelivr": "./dist/fetch-factory.umd.js",
+  "types": "./dist/fetch-factory.d.ts",
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "build-dts": "tsc -b tsconfig.build.json && rollup -c rollup.dts.config.js",
+    "lint": "eslint --ext \".ts,.js\" --ignore-path .eslintignore .",
+    "lint-fix": "eslint --fix --ext \".ts,.js\" --ignore-path .eslintignore .",
+    "clean": "rimraf dist && rimraf types"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.2.1",
+    "@rollup/plugin-terser": "^0.4.3",
+    "@rollup/plugin-typescript": "^11.1.3",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.3",
+    "prettier-eslint": "^15.0.1",
+    "rimraf": "^5.0.1",
+    "rollup": "^3.29.2",
+    "rollup-plugin-dts": "^6.0.2",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "tslib": "^2.6.2"
+  }
+}
