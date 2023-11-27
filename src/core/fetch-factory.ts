@@ -41,6 +41,18 @@ export class FetchFactory {
     this._baseConfig = config;
   }
 
+  public updateUrl(url: string) {
+    this._baseUrl = url;
+  }
+
+  public updateConfig(config: TConfig) {
+    this._baseConfig = config;
+  }
+
+  public mergeConfig(config: TConfig) {
+    this._baseConfig = this.deepObjectMerge(this._baseConfig, config);
+  }
+
   private deepObjectMerge(target: any, source: any) {
     const isObject = (obj: any) => obj && typeof obj === "object";
 
